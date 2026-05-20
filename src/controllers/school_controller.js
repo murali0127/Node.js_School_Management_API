@@ -4,7 +4,13 @@ const { createSchool, listSchoolsByProximity, listSchoolsByAlphabeticOrder } = r
 
 const addSchool = asyncHandler(async (req, res) => {
       const school = await createSchool(req.body);
-      return success(res, 201, 'School added successfully', school);
+
+      return success(
+            res,
+            201,
+            'School added successfully',
+            school
+      );
 });
 
 

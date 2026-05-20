@@ -11,7 +11,7 @@ const {
 router.get('/', (req, res) => {
       res.json({ success: true, message: 'Welcome to School_Magaement API' });
 })
-router.post('/addSchool', validate(addSchoolSchema, 'body'), addSchool);
+router.post('/addSchool', validate(addSchoolSchema), addSchool);
 
 router.get('/listSchools', listSchools);
 

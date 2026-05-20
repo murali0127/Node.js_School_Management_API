@@ -2,8 +2,10 @@ const repo = require('../repository/schoolRepository');
 const { haversineKm } = require('../utils/geo');
 
 const createSchool = async (payload) => {
-      const id = await repo.insertSchool(payload);
-      return repo.findSchoolById(id);
+      const createSchool = async (payload) => {
+            const id = await repo.insertSchool(payload);
+            return repo.findSchoolById(id);
+      };
 };
 
 const listSchoolsByProximity = async (userLat, userLng) => {

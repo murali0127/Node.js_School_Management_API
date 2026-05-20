@@ -11,7 +11,6 @@ const app = express();
 
 
 // const { notFound, errorHandler } = require('./src/middleware');
-const schoolRoutes = require('./src/routes/school_route')
 
 
 app.use(helmet());                              // sets 11 secure headers
@@ -19,10 +18,7 @@ app.use(cors());                                // allow cross-origin requests
 app.use(compression());                          // gzip responses
 app.use(express.json({ limit: '10kb' }));       // parse JSON body, cap size
 app.use(express.urlencoded({ extended: true }));// parse form data
-// app.use(morgan('dev'));                          // request logging
 
-// All routes under /api/v1
-// app.use('/api/v1', routes);
 
 // Error handlers must be LAST
 // app.use(notFound);
@@ -31,9 +27,10 @@ app.use(express.urlencoded({ extended: true }));// parse form data
 
 
 //Routes
+
+const schoolRoutes = require('./src/routes/school_route')
+
 app.use('/', schoolRoutes);
-
-
 app.get('/health', (req, res) =>
       res.json({ success: true, message: 'API is healthy', uptime: process.uptime() })
 );
