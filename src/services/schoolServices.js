@@ -19,4 +19,9 @@ const listSchoolsByProximity = async (userLat, userLng) => {
             .sort((a, b) => a.distance_km - b.distance_km);
 };
 
-module.exports = { createSchool, listSchoolsByProximity };
+const listSchoolsByAlphabeticOrder = async () => {
+      const schools = await repo.findAllSchoolsOnOrder();
+      return schools
+}
+
+module.exports = { createSchool, listSchoolsByProximity, listSchoolsByAlphabeticOrder };

@@ -1,6 +1,5 @@
 // Validation stuffs
 
-
 //school validators
 const Joi = require('joi');
 

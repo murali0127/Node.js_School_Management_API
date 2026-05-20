@@ -7,7 +7,7 @@ CHARACTER SET utf8mb4  COLLATE  utf8mb4_unicode_ci;
 USE school_management;
 CREATE TABLE IF NOT EXISTS schools(
       id INT  AUTO_INCREMENT PRIMARY KEY,
-      name VARCHAR(200) NOT NULL,
+      name VARCHAR(250) NOT NULL,
       address TEXT NOT NULL,
       latitude DOUBLE NOT NULL,
       longitude DOUBLE NOT NULL,

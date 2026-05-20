@@ -1,7 +1,7 @@
 # GET http://localhost:3000
 
 
-# GET http://localhost:3000/listSchools
+GET http://localhost:3000/listSchools
 
 
-POST http://localhost:3000/addSchool
+# POST http://localhost:3000/addSchool

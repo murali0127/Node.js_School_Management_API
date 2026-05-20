@@ -1,21 +1,34 @@
 const express = require('express');
 const router = express.Router();
-// const { db, pool } = require('./src/config/db');
+const helmet = require('helmet');
+const cors = require('cors');
+const compression = require('compression');
+
 const mysql = require('mysql2/promise');
 require('dotenv').config();
 
 const app = express();
 
 
-const pool = mysql.createPool({
-      host: process.env.DB_HOST,
-      user: process.env.DB_USER,
-      password: process.env.DB_PASSWORD,
-      database: process.env.DB_NAME,
-      namedPlaceholders: true,
-});
-
+// const { notFound, errorHandler } = require('./src/middleware');
 const schoolRoutes = require('./src/routes/school_route')
+
+
+app.use(helmet());                              // sets 11 secure headers
+app.use(cors());                                // allow cross-origin requests
+app.use(compression());                          // gzip responses
+app.use(express.json({ limit: '10kb' }));       // parse JSON body, cap size
+app.use(express.urlencoded({ extended: true }));// parse form data
+// app.use(morgan('dev'));                          // request logging
+
+// All routes under /api/v1
+// app.use('/api/v1', routes);
+
+// Error handlers must be LAST
+// app.use(notFound);
+// app.use(errorHandler)
+
+
 
 //Routes
 app.use('/', schoolRoutes);
@@ -27,6 +40,13 @@ app.get('/health', (req, res) =>
 
 
 
+// const pool = mysql.createPool({
+//       host: process.env.DB_HOST,
+//       user: process.env.DB_USER,
+//       password: process.env.DB_PASSWORD,
+//       database: process.env.DB_NAME,
+//       namedPlaceholders: true,
+// });
 // app.get('/db-test', async (req, res) => {
 //       try {
 //             const conn = await pool.getConnection();

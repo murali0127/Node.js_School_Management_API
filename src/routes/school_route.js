@@ -13,6 +13,6 @@ router.get('/', (req, res) => {
 })
 router.post('/addSchool', validate(addSchoolSchema, 'body'), addSchool);
 
-router.get('/listSchools', validate(listSchoolsSchema, 'query'), listSchools);
+router.get('/listSchools', listSchools);
 
 module.exports = router;

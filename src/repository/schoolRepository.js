@@ -24,4 +24,18 @@ const findAllSchools = async () => {
       return rows;
 };
 
-module.exports = { insertSchool, findSchoolById, findAllSchools };
+const findAllSchoolsOnOrder = async () => {
+      const [rows] = await pool.query(`
+            SELECT 
+                  id,
+                  name,
+                  address,
+                  latitude,
+                  longitude
+            FROM schools
+            ORDER BY name ASC
+      `);
+
+      return rows;
+}
+module.exports = { insertSchool, findSchoolById, findAllSchools, findAllSchoolsOnOrder };
