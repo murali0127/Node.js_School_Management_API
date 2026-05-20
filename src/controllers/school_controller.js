@@ -7,6 +7,7 @@ const addSchool = asyncHandler(async (req, res) => {
       return success(res, 201, 'School added successfully', school);
 });
 
+
 const listSchools = asyncHandler(async (req, res) => {
       const { latitude, longitude } = req.query;
       const schools = await listSchoolsByProximity(latitude, longitude);

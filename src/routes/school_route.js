@@ -8,10 +8,11 @@ const {
       listSchoolsSchema,
 } = require('../validation');
 
-router.get('/home', (req, res) => {
-      res.json('Welcome to School_Magaement API');
+router.get('/', (req, res) => {
+      res.json({ success: true, message: 'Welcome to School_Magaement API' });
 })
 router.post('/addSchool', validate(addSchoolSchema, 'body'), addSchool);
+
 router.get('/listSchools', validate(listSchoolsSchema, 'query'), listSchools);
 
 module.exports = router;

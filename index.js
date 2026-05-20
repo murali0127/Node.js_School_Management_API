@@ -26,22 +26,22 @@ app.get('/health', (req, res) =>
 );
 
 
-app.get('/db-test', async (req, res) => {
-      try {
-            const conn = await pool.getConnection();
-            await conn.ping();
-            conn.release();
-            res.json({ message: 'MySQL connected ✅' });
-      } catch (err) {
-            res.status(500).json({ error: err.message });
-      }
-});
+
+// app.get('/db-test', async (req, res) => {
+//       try {
+//             const conn = await pool.getConnection();
+//             await conn.ping();
+//             conn.release();
+//             res.json({ message: 'MySQL connected ✅' });
+//       } catch (err) {
+//             res.status(500).json({ error: err.message });
+//       }
+// });
 
 
 //Error Handling Middleware
 app.use((err, req, res, next) => {
       console.log(err);
-
       const { statusCode = 500, message = 'Something went wrong. Sorry!' } = err;
       res.status(statusCode).json(statusCode);
 })
