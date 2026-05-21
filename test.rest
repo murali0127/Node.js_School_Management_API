@@ -8,8 +8,8 @@ POST http://localhost:3000/addSchool
 Content-Type: application/json
 
 {
-  "name": "Test School",
-  "address": "123 Test St, India",
+  "name": "Jegan Matha",
+  "address": "IOB colony, Trichy",
   "latitude": 13.0827,
   "longitude": 80.2707
 }

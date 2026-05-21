@@ -1,14 +1,16 @@
-const { insertSchool, findAllSchools, findAllSchoolsOnOrder } = require('../repository/schoolRepository');
+const { insertSchool, findAllSchools, findAllSchoolsOnOrder, findSchoolById } = require('../repository/schoolRepository');
 const { haversineKm } = require('../utils/geo');
 
 const createSchool = async (payload) => {
-      const createSchool = async (payload) => {
-            const id = await insertSchool(payload);
-            console.log('Fetched school after insert:', school);
-            return repo.findSchoolById(id);
-            // return { id, ...payload }
-      };
+
+      const id = await insertSchool(payload);
+      const schools = findSchoolById(id);
+
+      console.log('Fetched school after insert:', schools);
+      return schools
+      // return { id, ...payload }
 };
+
 
 const listSchoolsByProximity = async (userLat, userLng) => {
       const schools = await findAllSchools();
