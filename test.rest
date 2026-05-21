@@ -1,7 +1,15 @@
 # GET http://localhost:3000
 
 
-# GET http://localhost:3000/listSchools
+# GET http://localhost:3000/listSchools?latitude=10.55&longitude=77.64
 
 
 POST http://localhost:3000/addSchool
+Content-Type: application/json
+
+{
+  "name": "Test School",
+  "address": "123 Test St, India",
+  "latitude": 13.0827,
+  "longitude": 80.2707
+}

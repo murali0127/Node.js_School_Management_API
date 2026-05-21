@@ -11,7 +11,7 @@ CREATE TABLE IF NOT EXISTS schools(
       address TEXT NOT NULL,
       latitude DOUBLE NOT NULL,
       longitude DOUBLE NOT NULL,
-      ceated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+      created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
       updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP, 
       INDEX idx_lat_lng (latitude, longitude)
 

@@ -4,7 +4,7 @@ const { createSchool, listSchoolsByProximity, listSchoolsByAlphabeticOrder } = r
 
 const addSchool = asyncHandler(async (req, res) => {
       const school = await createSchool(req.body);
-
+      console.log(school)
       return success(
             res,
             201,
@@ -17,22 +17,12 @@ const addSchool = asyncHandler(async (req, res) => {
 const listSchools = asyncHandler(async (req, res) => {
 
       const { latitude, longitude } = req.query;
-      if ((latitude !== null && longitude !== null) || (latitude !== 0 && longitude !== 0)) {
-            const schools = await listSchoolsByProximity(latitude, longitude);
-            return success(res, 200, 'Schools fetched successfully', {
-                  count: schools.length,
-                  userLocation: { latitude, longitude },
-                  schools,
-            });
-      } else {
-
-            const schools = await listSchoolsByAlphabeticOrder();
-            return success(res, 200, 'Schools fetched successfully', {
-                  count: schools.length,
-                  sortOrder: 'Aplhabetic',
-                  schools,
-            });
-      }
+      const schools = await listSchoolsByProximity(latitude, longitude);
+      return success(res, 200, 'Schools fetched successfully', {
+            count: schools.length,
+            userLocation: { latitude, longitude },
+            schools,
+      });
 });
 
 module.exports = { addSchool, listSchools };

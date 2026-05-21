@@ -1,6 +1,6 @@
 //  mySQL connection pool
 const mysql = require('mysql2/promise');
-const db = require('./env');
+const { db } = require('./env');
 
 
 
@@ -27,7 +27,7 @@ const pool = mysql.createPool({
             console.log('MySQL Connection error.');
             process.exit();
       }
-});
+})();
 
 
 module.exports = pool;

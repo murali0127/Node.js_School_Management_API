@@ -60,9 +60,9 @@ app.get('/health', (req, res) =>
 app.use((err, req, res, next) => {
       console.log(err);
       const { statusCode = 500, message = 'Something went wrong. Sorry!' } = err;
-      res.status(statusCode).json(statusCode);
+      res.status(statusCode).json({ success: false, message });
 })
 
-app.listen('3000', () => {
+app.listen(3000, () => {
       console.log('APP RUNNING ON PORT 3000')
 })
