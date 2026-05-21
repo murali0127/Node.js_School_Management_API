@@ -55,6 +55,8 @@ app.use((err, req, res, next) => {
       res.status(statusCode).json({ success: false, message });
 })
 
-app.listen(3000, () => {
+const PORT = process.env.PORT;
+
+app.listen(PORT || 3000, "0.0.0.0", () => {
       console.log('APP RUNNING ON PORT 3000')
 })
